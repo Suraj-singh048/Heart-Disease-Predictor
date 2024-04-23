@@ -84,7 +84,7 @@ def main():
     col1, col2 = st.columns([1, 3])  # Ratio of 1:3 for columns
 
     with col1:
-        st.image(r"C:\Users\suraj\Desktop\projects\heart-disease-project\img.png", use_column_width=True)  # Image
+        st.image("./img.png", use_column_width=True)  # Image
     with col2:
         # Description
         st.markdown("""
