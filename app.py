@@ -9,9 +9,6 @@ model = pickle.load(open('gs-log-reg.model', 'rb'))
 data_file = '6.1 heart-disease.csv'
 df = pd.read_csv(data_file)
 
-#n = random.randint(0, len(df))
-#data = df.iloc[[n]]
-
 # Define the features that predict the target as 1 for heart disease
 features = ['age', 'sex', 'cp', 'trestbps', 'chol', 'fbs', 'restecg', 'thalach', 'exang', 'oldpeak', 'slope', 'ca', 'thal']
 
@@ -38,6 +35,8 @@ def predict_heart_disease(age, sex, cp, trestbps, chol, fbs, restecg, thalach, e
 # Streamlit app
 def main():
     st.markdown('<h1 style="color: red;">Heart Disease Predictor</h1>', unsafe_allow_html=True)
+    st.markdown('<span style="color: #219C90; font-size: 26px; font-weight: bold;">Empowering Health Decisions: Predicting Heart Disease with Data Science</span>', unsafe_allow_html=True)
+    st.sidebar.markdown('<h2 style="color: Orange; font-weight: bold;">Enter Patient Information</h2>', unsafe_allow_html=True)
     st.markdown(
         """
         <style>
@@ -81,8 +80,7 @@ def main():
         """,
         unsafe_allow_html=True
          )
-    # Display random sample data
-    st.subheader('Empowering Health Decisions: Predicting Heart Disease with Data Science')
+    
     col1, col2 = st.columns([1, 3])  # Ratio of 1:3 for columns
 
     with col1:
@@ -90,22 +88,23 @@ def main():
     with col2:
         # Description
         st.markdown("""
-            Welcome, <br />
-            To our Heart Disease Prediction App! Leveraging the power of data science,
+        <span style="font-size: 20px;">
+            Welcome to our Heart Disease Prediction App! Leveraging the power of data science,
             our app provides accurate predictions about the likelihood of heart disease,
-            boasting an impressive accuracy rate of 92%.<br /> 
-            Addressing the challenge of early detection and risk assessment, 
-            our tool simplifies the process by analyzing various patient factors to deliver clear predictions.
-            Empowering users to take proactive steps towards better heart health, our user-friendly interface allows for easy input of information
-            and instant receipt of personalized predictions. By enabling timely intervention through early detection,
-            our app aims to improve health outcomes and save lives.
-             
-            Fill in the information on the left sidebar and click "Predict" to see the result.
-        """, unsafe_allow_html=True)
+            boasting an impressive accuracy rate of 92%.
+        </span><br/><br/>
+        <span style="font-size: 17px;"> Addressing the challenge of early detection and risk assessment, 
+        our tool simplifies the process by analyzing various patient factors to deliver clear predictions.
+        Empowering users to take proactive steps towards better heart health, our user-friendly interface allows for easy input of information
+        and instant receipt of personalized predictions. By enabling timely intervention through early detection,
+        our app aims to improve health outcomes and save lives.
+        <br/><br/>
+        Fill in the information on the left sidebar and click <span style="font-weight: bold; color: #219C90"> "Predict" </span> to see the result.</span>
+    """, unsafe_allow_html=True)
     
     
     # Collect user input for features
-    st.sidebar.markdown('<h2 style="color: Orange; font-weight: bold;">Enter Patient Information</h2>', unsafe_allow_html=True)
+    
     user_input = {}
     mappings = {
     'sex': {
